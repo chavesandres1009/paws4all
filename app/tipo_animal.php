@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Mascots extends Model
+class tipo_animal extends Model
 {
     //
 }

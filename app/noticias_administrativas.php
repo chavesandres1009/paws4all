@@ -4,18 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Mascotas extends Model
+class noticias_administrativas extends Model
 {
     //
     protected $fillable = [
-        'raza', 'edad', 'estado', 'tamano', 'tipo', 'refugio_id'
+        'titulo', 'descripcion', 'imagen', 'refugio_id'
     ];
 
     public function refugio(){
       return $this->belongsTo('App/refugios');
-    }
-
-    public function usuario_mascotas(){
-      return $this->hasMany('App/usuario_mascota');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateNoticiasAdministrativasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,15 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('noticias_administrativas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('apellido');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->boolean('is_admin');
-            $table->integer('refugio')->unsigned();
+            $table->string('titulo');
+            $table->text('descripcion');
+            $table->string('imagen');
+            $table->integer('refugio_id')->unsigned();
             $table->foreign('refugio_id')->references('id')
                                          ->on('refugios')
                                          ->onDelete('cascade');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -36,6 +33,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::dropIfExists('noticias_administrativas');
     }
 }

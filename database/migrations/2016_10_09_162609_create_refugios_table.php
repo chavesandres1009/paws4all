@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMascotsTable extends Migration
+class CreateRefugiosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMascotsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mascots', function (Blueprint $table) {
+        Schema::create('refugios', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateMascotsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mascots');
+        Schema::dropIfExists('refugios');
     }
 }
