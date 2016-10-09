@@ -17,7 +17,7 @@ class CreateNoticiasAdministrativasTable extends Migration
             $table->increments('id');
             $table->string('titulo');
             $table->text('descripcion');
-            $table->string('imagen');
+            $table->string('imagen')->nullable();
             $table->integer('refugio_id')->unsigned();
             $table->foreign('refugio_id')->references('id')
                                          ->on('refugios')

@@ -17,7 +17,7 @@ class CreateRefugiosTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->text('direccion');
-            $table->text('descripcion');
+            $table->text('descripcion')->unable();
             $table->text('telefono');
             $table->text('email');
             $table->timestamps();

@@ -15,12 +15,12 @@ class CreateMascotasTable extends Migration
     {
         Schema::create('mascotas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('raza');
+            $table->string('raza')->nullable();
             $table->integer('edad');
             $table->string('tipo');
             $table->string('estado');
             $table->float('tamano');
-            $table->string('imagen');
+            $table->string('imagen')->nullable();
             $table->integer('refugio_id')->unsigned();
             $table->foreign('refugio_id')->references('id')
                                          ->on('refugios')

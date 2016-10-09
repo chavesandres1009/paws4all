@@ -16,7 +16,7 @@ class CreateUsuarioMascotasTable extends Migration
         Schema::create('usuario_mascotas', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('adopcion');
-            $table->double('aporte');
+            $table->double('aporte')->nullable();
             $table->integer('mascota_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->foreign('mascota_id')->references('id')
