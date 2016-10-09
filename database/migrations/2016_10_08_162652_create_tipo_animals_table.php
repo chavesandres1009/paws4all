@@ -13,7 +13,7 @@ class CreateTipoAnimalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_animals', function (Blueprint $table) {
+        Schema::create('tipo_animales', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
             $table->timestamps();
