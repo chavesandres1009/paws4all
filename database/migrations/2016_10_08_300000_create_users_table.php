@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->boolean('is_admin');
-            $table->integer('refugio')->unsigned();
+            $table->integer('refugio_id')->unsigned();
             $table->foreign('refugio_id')->references('id')
                                          ->on('refugios')
                                          ->onDelete('cascade');

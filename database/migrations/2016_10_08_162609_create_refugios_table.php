@@ -15,6 +15,11 @@ class CreateRefugiosTable extends Migration
     {
         Schema::create('refugios', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre');
+            $table->text('direccion');
+            $table->text('descripcion');
+            $table->text('telefono');
+            $table->text('email');
             $table->timestamps();
         });
     }
