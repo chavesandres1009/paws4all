@@ -7,14 +7,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="GET" action="{{ url('/animal_add') }}">
+                    <form class="form-horizontal" role="form" method="GET" action="{{ url('/guardar_animal') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('tipo') ? ' has-error' : '' }}">
                             <label for="tipo" class="col-md-4 control-label">Tipo</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="tipo">
                                 <select class="form-control" name="tipo">
                                   <option value="Perro">Perro</option>
                                   <option value="Gato">Gato</option>
@@ -26,9 +25,9 @@
                             <label for="raza" class="col-md-4 control-label">Raza</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="raza">
+                                <input type="text" class="form-control" name="raza" @if(isset($mascota)) value="{{ $mascota->raza }}" @endif />
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('raza'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
@@ -40,9 +39,9 @@
                             <label for="edad" class="col-md-4 control-label">Edad</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="edad">
+                                <input type="number" class="form-control" name="edad" @if(isset($mascota)) value="{{ $mascota->edad }}" @endif>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('edad'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('edad') }}</strong>
                                     </span>
@@ -54,7 +53,7 @@
                             <label for="tamano" class="col-md-4 control-label">Tamaño</label>
 
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="tamano">
+                                <input type="text" class="form-control" name="tamano" @if(isset($mascota)) value="{{ $mascota->tamano }}" @endif>
 
                                 @if ($errors->has('tamano'))
                                     <span class="help-block">
@@ -63,6 +62,20 @@
                                 @endif
                             </div>
                         </div>
+
+                        @if (isset($mascota))
+                        <div class="form-group{{ $errors->has('estado') ? ' has-error' : '' }}">
+                            <label for="estado" class="col-md-4 control-label">Estado</label>
+
+                            <div class="col-md-6">
+                                <select class="form-control" name="estado">
+                                  <option value="Sin apadrinar">Sin Apadrinar</option>
+                                  <option value="Apadrinado">Apadrinado</option>
+                                </select>
+                            </div>
+                        </div>
+                        @endif
+
 
                         <div class="form-group{{ $errors->has('imagen') ? ' has-error' : '' }}">
                             <label for="imagen" class="col-md-4 control-label">Fotografía</label>
@@ -81,7 +94,11 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
+                                  @if (isset($mascota))
+                                    Modificar
+                                  @else
                                     Guardar
+                                  @endif
                                 </button>
                             </div>
                         </div>

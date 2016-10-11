@@ -59,8 +59,9 @@
                               </a>
                               <ul class="dropdown-menu" role="menu">
                                   <li>
-                                      <a href="{{ url('/addAnimales') }}">Ver todos</a>
-                                      <a href="">Administrar</a>
+                                      <a href="{{ url('/animal_add') }}">Agregar</a>
+                                      <a href="{{ url('/1/modificar_animal')}}">Modificar</a>
+                                      <a href="{{ url('/animales')}}">Ver todos</a>
                                   </li>
                                 </ul>
                             </li>

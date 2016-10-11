@@ -39,18 +39,20 @@ class MascotasController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-          'raza' => 'requiere',
-          'edad' => 'require|integer',
-          'tamano' => 'require|numeric',
-          'imagen' => 'image'
+          'raza' => 'required',
+          'edad' => 'required|integer',
+          'tamano' => 'required|numeric',
+
         ]);
         $mascota = new Mascotas();
-        $mascota->tipo_animal = $request->tipo_animal;
+        $mascota->tipo = $request->input('tipo');
         $mascota->raza = $request->raza;
         $mascota->edad = $request->edad;
+        $mascota->estado = "Sin apadrinar";
         $mascota->tamano = $request->tamano;
 
         $mascota->save();
+        return view("home");
     }
 
     /**
@@ -64,6 +66,12 @@ class MascotasController extends Controller
         //
     }
 
+    public function show_all()
+    {
+        //
+        return view('animales.animales')->with(['mascotas' => Mascotas::all()]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -73,6 +81,8 @@ class MascotasController extends Controller
     public function edit($id)
     {
         //
+        $mascota = Mascotas::find($id);
+        return view('animales.addAnimales')->with(['mascota' => $mascota]);
     }
 
     /**

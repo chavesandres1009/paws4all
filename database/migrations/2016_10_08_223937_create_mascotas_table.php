@@ -21,7 +21,7 @@ class CreateMascotasTable extends Migration
             $table->string('estado');
             $table->float('tamano');
             $table->string('imagen')->nullable();
-            $table->integer('refugio_id')->unsigned();
+            $table->integer('refugio_id')->unsigned()->nullable();
             $table->foreign('refugio_id')->references('id')
                                          ->on('refugios')
                                          ->onDelete('cascade');

@@ -21,6 +21,12 @@ Route::get('/animal_add', function () {
 
 Auth::routes();
 
+Route::get('/guardar_animal', 'MascotasController@store');
+
+Route::get('/{mascota}/modificar_animal/', 'MascotasController@edit');
+
+Route::get('/animales', 'MascotasController@show_all');
+
 Route::get('/home', 'HomeController@index');
 
 Route::resource('/noticias', 'NoticiasController');
