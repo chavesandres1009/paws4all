@@ -38,7 +38,19 @@ class MascotasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+          'raza' => 'requiere',
+          'edad' => 'require|integer',
+          'tamano' => 'require|numeric',
+          'imagen' => 'image'
+        ]);
+        $mascota = new Mascotas();
+        $mascota->tipo_animal = $request->tipo_animal;
+        $mascota->raza = $request->raza;
+        $mascota->edad = $request->edad;
+        $mascota->tamano = $request->tamano;
+
+        $mascota->save();
     }
 
     /**

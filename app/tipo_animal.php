@@ -7,4 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class tipo_animal extends Model
 {
     //
+    protected $fillable = [
+        'nombre'
+    ];
 }
