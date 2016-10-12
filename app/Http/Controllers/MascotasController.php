@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Mascotas;
+use Storage;
 
 class MascotasController extends Controller
 {
@@ -42,6 +43,7 @@ class MascotasController extends Controller
           'raza' => 'required',
           'edad' => 'required|integer',
           'tamano' => 'required|numeric',
+          //'img' => 'image|mimes:jpg,jpeg,png,gif'
 
         ]);
         $mascota = new Mascotas();
@@ -51,6 +53,13 @@ class MascotasController extends Controller
         $mascota->estado = "Sin apadrinar";
         $mascota->tamano = $request->tamano;
 
+        dd($request);
+        $img = $request->file('img');
+        if($img != null){
+          $name = time() . '_' . $img->getClientOriginalName();
+          Storage::disk('public')->put($name, file_get_contents($img->getRealPath()));
+          $mascota->imagen = $name;
+        }
         $mascota->save();
         return view("home");
     }
@@ -94,7 +103,31 @@ class MascotasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request, [
+        'raza' => 'required',
+        'edad' => 'required|integer',
+        'tamano' => 'required|numeric',
+        //'imagen' => 'image|mimes:jpg,jpeg,png,gif'
+
+      ]);
+      $mascota = Mascotas::find($id);
+      $mascota->tipo = $request->input('tipo');
+      $mascota->raza = $request->raza;
+      $mascota->edad = $request->edad;
+      $mascota->estado = $request->estado;
+      $mascota->tamano = $request->tamano;
+
+      //dd($request);
+      $img = $request->file('img');
+      if($img != null)
+      {
+        $name = time() . '_' . $request->img->getClientOriginalName();
+        Storage::disk('public')->put($name, file_get_contents($img->getRealPath()));
+        $mascota->imagen = $name;
+      }
+
+      $mascota->save();
+      return view("home");
     }
 
     /**
@@ -106,5 +139,7 @@ class MascotasController extends Controller
     public function destroy($id)
     {
         //
+        Mascotas::destroy($id);
+        return back();
     }
 }

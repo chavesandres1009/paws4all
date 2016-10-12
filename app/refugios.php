@@ -8,7 +8,7 @@ class refugios extends Model
 {
     //
     protected $fillable = [
-        'nombre', 'direccion', 'descripcion', 'telefono', 'correo'
+        'nombre', 'direccion', 'descripcion', 'telefono', 'correo', 'logo'
     ];
 
     public function user(){

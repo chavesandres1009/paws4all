@@ -17,11 +17,15 @@
             <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
 
             <hr>
-            <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+            <img src="storage/{{ $mascota->imagen }}" class="img-responsive"  alt="">
             <hr>
             <p>Raza: {{ $mascota->raza }}</p>
             <p>Tipo: {{ $mascota->tipo }}</p>
-            <p>Raza: {{ $mascota->estado }}</p>
+            <p>Estado: {{ $mascota->estado }}</p>
+            <p>
+              <a href="{{ $mascota->id }}/modificar_animal" class="btn-link">Modificar</a>
+              <a href="{{ $mascota->id }}/eliminar_animal" class="btn-link">Eliminar</a>
+            </p>
             <hr>
           </div>
         </div>

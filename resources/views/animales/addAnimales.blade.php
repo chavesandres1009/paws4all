@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="GET" action="{{ url('/guardar_animal') }}">
+                    <form class="form-horizontal" role="form" method="POST" @if (isset($mascota))  action="{{ url('/'. $mascota->id .'/guardar_animal') }}" @else action="{{ url('/guardar_animal') }}" @endif enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('tipo') ? ' has-error' : '' }}">
@@ -15,8 +15,8 @@
 
                             <div class="col-md-6">
                                 <select class="form-control" name="tipo">
-                                  <option value="Perro">Perro</option>
-                                  <option value="Gato">Gato</option>
+                                  <option value="Perro" @if(isset($mascota) && $mascota->tipo == "Perro") selected @endif>Perro</option>
+                                  <option value="Gato" @if(isset($mascota) && $mascota->tipo == "Gato") selected @endif >Gato</option>
                                 </select>
                             </div>
                         </div>
@@ -69,8 +69,8 @@
 
                             <div class="col-md-6">
                                 <select class="form-control" name="estado">
-                                  <option value="Sin apadrinar">Sin Apadrinar</option>
-                                  <option value="Apadrinado">Apadrinado</option>
+                                  <option value="Sin apadrinar" @if($mascota->estado == "Sin apadrinar") selected @endif>Sin Apadrinar</option>
+                                  <option value="Apadrinado" @if($mascota->estado == "Apadrinado") selected @endif>Apadrinado</option>
                                 </select>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                             <label for="imagen" class="col-md-4 control-label">Fotografía</label>
 
                             <div class="col-md-6">
-                                <input type="file" class="form-control" name="imagen" required>
+                                <input type="file" class="form-control" name="img">
 
                                 @if ($errors->has('imagen'))
                                     <span class="help-block">

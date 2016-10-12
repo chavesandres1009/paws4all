@@ -60,8 +60,19 @@
                               <ul class="dropdown-menu" role="menu">
                                   <li>
                                       <a href="{{ url('/animal_add') }}">Agregar</a>
-                                      <a href="{{ url('/1/modificar_animal')}}">Modificar</a>
                                       <a href="{{ url('/animales')}}">Ver todos</a>
+                                  </li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                  Refugios <span class="caret"></span>
+                              </a>
+                              <ul class="dropdown-menu" role="menu">
+                                  <li>
+                                      <a href="{{ url('/refugio_add') }}">Agregar</a>
+                                      <a href="{{ url('/refugios')}}">Ver todos</a>
                                   </li>
                                 </ul>
                             </li>

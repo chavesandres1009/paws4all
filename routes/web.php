@@ -19,13 +19,31 @@ Route::get('/animal_add', function () {
     return view('animales.addAnimales');
 });
 
+Route::get('/refugio_add', function () {
+    return view('refugios.add_modify_refugio');
+});
+
 Auth::routes();
 
-Route::get('/guardar_animal', 'MascotasController@store');
+Route::post('/guardar_animal', 'MascotasController@store');
 
 Route::get('/{mascota}/modificar_animal/', 'MascotasController@edit');
 
+Route::post('/{mascota}/guardar_animal/', 'MascotasController@update');
+
+Route::get('/{mascota}/eliminar_animal/', 'MascotasController@destroy');
+
 Route::get('/animales', 'MascotasController@show_all');
+
+Route::post('/guardar_refugio', 'RefugiosController@store');
+
+Route::get('/{refugio}/modificar_refugio/', 'RefugiosController@edit');
+
+Route::post('/{refugio}/guardar_refugio/', 'RefugiosController@update');
+
+Route::get('/{refugio}/eliminar_refugio/', 'RefugiosController@destroy');
+
+Route::get('/refugios', 'RefugiosController@show_all');
 
 Route::get('/home', 'HomeController@index');
 
