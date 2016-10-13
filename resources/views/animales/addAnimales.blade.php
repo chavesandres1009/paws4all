@@ -91,6 +91,8 @@
                             </div>
                         </div>
 
+                        <input name="refugio_id" style="visibility: hidden" value="{{ Auth::user()->refugio_id }}" />
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

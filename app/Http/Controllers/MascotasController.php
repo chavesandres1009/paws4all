@@ -116,6 +116,7 @@ class MascotasController extends Controller
       $mascota->edad = $request->edad;
       $mascota->estado = $request->estado;
       $mascota->tamano = $request->tamano;
+      $mascota->refugio_id = $request->refugio_id;
 
       //dd($request);
       $img = $request->file('img');

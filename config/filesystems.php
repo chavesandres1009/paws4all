@@ -54,6 +54,12 @@ return [
             'visibility' => 'public',
         ],
 
+        'refugios_pic' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/refugios'),
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => 'your-key',

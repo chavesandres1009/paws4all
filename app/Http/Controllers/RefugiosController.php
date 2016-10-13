@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\refugios;
+use App\User;
 use Storage;
 
 class RefugiosController extends Controller
@@ -16,6 +17,7 @@ class RefugiosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     
     public function index()
     {
         //
@@ -63,24 +65,26 @@ class RefugiosController extends Controller
         'email' => 'required|email',
       ]);
 
-      dd($request);
-/*      $refugio = new refugios();
+//      dd($request);
+      $refugio = new refugios();
 //      $this->set_refugio($refugio, $request);
       $refugio->nombre = $request->nombre;
       $refugio->direccion = $request->direccion;
       $refugio->descripcion = $request->descripcion;
       $refugio->telefono = $request->telefono;
       $refugio->email = $request->email;
+      $user = user::find($request->user_id);
 
       $logo = $request->file('logo');
       if($logo != null){
         $name = time(). '_' . $logo->getClientOriginalName();
-        Storage::disk('public')->put($name, file_get_contents($logo->getRealPath()));
+        Storage::disk('refugios_pic')->put($name, file_get_contents($logo->getRealPath()));
         $refugio->logo = $name;
       }
       $refugio->save();
-
-      return view('home');*/
+      $user->refugio_id = $refugio->id;
+      $user->save();
+      return view('home');
     }
 
     /**
@@ -106,7 +110,8 @@ class RefugiosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $refugio = refugios::find($id);
+        return view('refugios.add_modify_refugio')->with(['refugio' => $refugio]);
     }
 
     /**
@@ -119,10 +124,10 @@ class RefugiosController extends Controller
     public function update(Request $request, $id)
     {
       $this->validate($request, [
-        'nombre' => 'require',
-        'direccion' => 'require',
-        'telefono' => 'require',
-        'email' => 'require|email',
+        'nombre' => 'required',
+        'direccion' => 'required',
+        'telefono' => 'required',
+        'email' => 'required|email',
       ]);
 
       $refugio = refugios::find($id);
