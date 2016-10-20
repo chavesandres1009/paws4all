@@ -54,6 +54,12 @@ return [
             'visibility' => 'public',
         ],
 
+        'mascotas_pic' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/mascotas'),
+            'visibility' => 'public',
+        ],
+
         'refugios_pic' => [
             'driver' => 'local',
             'root' => storage_path('app/public/refugios'),

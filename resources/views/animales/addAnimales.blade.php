@@ -21,6 +21,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
+                            <label for="nombre" class="col-md-4 control-label">Nombre</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="nombre" @if(isset($mascota)) value="{{ $mascota->nombre }}" @endif />
+
+                                @if ($errors->has('nombre'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('nombre') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('raza') ? ' has-error' : '' }}">
                             <label for="raza" class="col-md-4 control-label">Raza</label>
 
@@ -29,7 +43,7 @@
 
                                 @if ($errors->has('raza'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('raza') }}</strong>
                                     </span>
                                 @endif
                             </div>

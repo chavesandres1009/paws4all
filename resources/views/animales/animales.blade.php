@@ -9,7 +9,7 @@
 
         <div class="col-lg-8">
 
-            <h2>Nombre</h2>
+            <h2>Hola, mi nombre es {{ $mascota->nombre }}</h2>
             <p class="lead">
                 by <a href="#">Refugio</a>
             </p>
@@ -17,7 +17,7 @@
             <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
 
             <hr>
-            <img src="storage/{{ $mascota->imagen }}" class="img-responsive"  alt="">
+            <img src="storage/mascotas/{{ $mascota->imagen }}" class="img-responsive"  alt="">
             <hr>
             <p>Raza: {{ $mascota->raza }}</p>
             <p>Tipo: {{ $mascota->tipo }}</p>

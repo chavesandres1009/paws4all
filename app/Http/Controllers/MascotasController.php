@@ -40,6 +40,7 @@ class MascotasController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+          'nombre' => 'required',
           'raza' => 'required',
           'edad' => 'required|integer',
           'tamano' => 'required|numeric',
@@ -47,17 +48,18 @@ class MascotasController extends Controller
 
         ]);
         $mascota = new Mascotas();
+        $mascota->nombre = $request->nombre;
         $mascota->tipo = $request->input('tipo');
         $mascota->raza = $request->raza;
         $mascota->edad = $request->edad;
         $mascota->estado = "Sin apadrinar";
         $mascota->tamano = $request->tamano;
 
-        dd($request);
+        //dd($request);
         $img = $request->file('img');
         if($img != null){
           $name = time() . '_' . $img->getClientOriginalName();
-          Storage::disk('public')->put($name, file_get_contents($img->getRealPath()));
+          Storage::disk('mascotas_pic')->put($name, file_get_contents($img->getRealPath()));
           $mascota->imagen = $name;
         }
         $mascota->save();
@@ -111,6 +113,7 @@ class MascotasController extends Controller
 
       ]);
       $mascota = Mascotas::find($id);
+      $mascota->nombre = $request->nombre;
       $mascota->tipo = $request->input('tipo');
       $mascota->raza = $request->raza;
       $mascota->edad = $request->edad;
@@ -123,7 +126,7 @@ class MascotasController extends Controller
       if($img != null)
       {
         $name = time() . '_' . $request->img->getClientOriginalName();
-        Storage::disk('public')->put($name, file_get_contents($img->getRealPath()));
+        Storage::disk('mascotas_pic')->put($name, file_get_contents($img->getRealPath()));
         $mascota->imagen = $name;
       }
 

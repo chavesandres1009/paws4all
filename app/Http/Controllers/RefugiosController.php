@@ -142,7 +142,7 @@ class RefugiosController extends Controller
       $logo = $request->file('logo');
       if($logo != null){
         $name = time(). '_' . $logo->getClientOriginalName();
-        Storage::disk('public')->put($name, file_get_contents($img->getRealPath()));
+        Storage::disk('public')->put($name, file_get_contents($logo->getRealPath()));
         $refugio->logo = $name;
       }
       $refugio->save();

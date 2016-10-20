@@ -8,7 +8,7 @@ class Mascotas extends Model
 {
     //
     protected $fillable = [
-        'raza', 'edad', 'estado', 'tamano', 'tipo', 'refugio_id'
+        'nombre', 'raza', 'edad', 'estado', 'tamano', 'tipo', 'refugio_id'
     ];
 
     public function refugio(){
