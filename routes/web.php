@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/ind', function () {
+    return view('main');
+});
+
 Route::get('/animal_add', function () {
     return view('animales.addAnimales');
 });
