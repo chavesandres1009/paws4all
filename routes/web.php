@@ -51,7 +51,9 @@ Route::get('/refugios', 'RefugiosController@show_all');
 
 Route::get('/home', 'HomeController@index');
 
+// NOTICIAS
 Route::resource('/noticias', 'NoticiasController');
+Route::post('/noticia', 'NoticiasController@store');
 
 Auth::routes();
 
