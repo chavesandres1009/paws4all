@@ -8,6 +8,10 @@ use App\Http\Requests;
 
 use App\noticias;
 
+use App\User;
+
+use Illuminate\Support\Facades\Storage;
+
 class NoticiasController extends Controller
 {
     /**
@@ -18,6 +22,13 @@ class NoticiasController extends Controller
     public function index()
     {
         //
+        $noticias = noticias::all();
+        $usuarios = User::all();
+
+        return view('noticias.index', [
+            'noticias' => $noticias,
+            'usuarios' => $usuarios,
+        ]);
     }
 
     /**
@@ -39,7 +50,21 @@ class NoticiasController extends Controller
     public function store(Request $request)
     {
         //
-        dd("Hola mundo");
+        $file_route = 'none';
+        $img = $request->file('urlImg');
+        if(isset($img)) {
+            $file_route = time() . '_' . $img->getClientOriginalName();
+            Storage::disk('imgNoticias')->put($file_route, file_get_contents($img->getRealPath()));
+        }
+
+
+        $request->user()->noticias()->create([
+            'titulo' => $request->titulo,
+            'descripcion' => $request->descripcion,
+            'imagen' => $file_route,
+        ]);
+
+        return redirect('/noticias');
     }
 
     /**
