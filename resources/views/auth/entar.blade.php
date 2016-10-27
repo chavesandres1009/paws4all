@@ -6,25 +6,51 @@
       <section>
         <form method="post" action="{{ url('/register') }}">
           {{ csrf_field() }}
+
           <div class="field ">
             <label for="name">Nombre</label>
             <input type="text" name="name" id="name"/>
+            @if ($errors->has('name'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('name') }}</strong>
+                </span>
+            @endif
           </div>
           <div class="field ">
-            <label for="name">Apellidos</label>
-            <input type="text" name="name" id="lastName"/>
+            <label for="apellidos">Apellidos</label>
+            <input type="text" name="apellidos" id="lastName"/>
+            @if ($errors->has('apellidos'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('apellidos') }}</strong>
+                </span>
+            @endif
           </div>
           <div class="field">
             <label for="email">Correo</label>
             <input type="text" name="email" id="email"/>
+            @if ($errors->has('email'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
+            @endif
           </div>
           <div class="field half first">
-            <label for="email">Contraseña</label>
-            <input type="text" name="password" id="password"/>
+            <label for="password">Contraseña</label>
+            <input type="password" name="password" id="password"/>
+            @if ($errors->has('password'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('password') }}</strong>
+                </span>
+            @endif
           </div>
           <div class="field half">
-            <label for="email">Repetir Contraseña</label>
-            <input type="text" name="password" id="password2"/>
+            <label for="password_confirmation">Repetir Contraseña</label>
+            <input type="password" name="password_confirmation" id="password2"/>
+            @if ($errors->has('password_confirmation'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('password_confirmation') }}</strong>
+                </span>
+            @endif
           </div>
 
              <!--<div class="field">
@@ -41,11 +67,21 @@
               {{ csrf_field() }}
               <div class="field">
                 <label for="email">Correo</label>
-                <input type="text" name="email" id="emailUp"/>
+                <input type="text" name="email" id="emailUp" value="{{ old('email') }}"/>
+                @if ($errors->has('email'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
               </div>
               <div class="field">
-                <label for="email">Contraseña</label>
-                <input type="text" name="password" id="passwordUp"/>
+                <label for="password">Contraseña</label>
+                <input type="password" name="password" id="passwordUp"/>
+                @if ($errors->has('password'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
               </div>
               <ul class="actions">
                 <li><a href="" class="button submit">Iniciar</a></li>

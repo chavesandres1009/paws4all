@@ -31,5 +31,6 @@
         </div>
       </div>
 @endforeach
+<?php echo $mascotas->render(); ?>
 @endif
 @endsection

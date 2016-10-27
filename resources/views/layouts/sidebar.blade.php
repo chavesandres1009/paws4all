@@ -31,11 +31,12 @@
 				<nav>
 					<ul>
 						<li><a href="#intro">Bienvenido</a></li>
+						@if(Auth::guest())
 						<li><a href="#entrar">Entrar</a></li>
+						@endif
 						<li><a href="#noticias">Noticias</a></li>
 						<li><a href="#mascotas">Mascotas</a></li>
 						<li><a href="#refugios">Refugios</a></li>
-
 					</ul>
 				</nav>
 			</div>

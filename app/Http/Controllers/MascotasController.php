@@ -80,7 +80,8 @@ class MascotasController extends Controller
     public function show_all()
     {
         //
-        return view('animales.animales')->with(['mascotas' => Mascotas::all()]);
+        $mascotas = Mascotas::paginate(2);
+        return view('animales.animales', ['mascotas' => $mascotas]);
     }
 
     /**

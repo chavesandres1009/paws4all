@@ -3,9 +3,13 @@
 @section('intro')
   @include('bienvenidos')
 @endsection
+
+@if(Auth::guest())
 @section('entrar')
   @include('auth.entar')
 @endsection
+@endif
+
 @section('noticias')
 
 @endsection
