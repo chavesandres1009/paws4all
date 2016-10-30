@@ -53,12 +53,11 @@
 
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Ingresar</a></li>
-                            <li><a href="{{ url('/register') }}">Registerse</a></li>
+                            <!--<li><a href="{{ url('/register') }}">Registerse</a></li>-->
                             <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                  Registrarse <span class="caret"></span>
-                              </a>
-                              <ul class="dropdown-menu" role="menu">
+                                  Registrarse<span class="caret"></span>
+                              </a>                              <ul class="dropdown-menu" role="menu">
                                   <li>
                                       <a href="{{ url('/register') }}">Nuevo Usuario</a>
                                       <a href="{{ url('/refugio_user_add')}}">Registrar refugio</a>
@@ -80,7 +79,7 @@
                             </li>
                           @endif
 
-                            <li class="dropdown">
+                            <!--<li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                   Refugios <span class="caret"></span>
                               </a>
@@ -90,7 +89,7 @@
                                       <a href="{{ url('/refugios')}}">Ver todos</a>
                                   </li>
                                 </ul>
-                            </li>
+                            </li>-->
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -99,6 +98,7 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                        <a href="">Modificar</a>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
