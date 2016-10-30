@@ -28,11 +28,11 @@ class User extends Authenticatable
     ];
 
     public function refugio(){
-      return $this->belongsTo('App/refugios');
+      return $this->belongsTo('App\refugios');
     }
 
     public function usuario_mascota(){
-      return $this->hasMany('App/usuario_mascota');
+      return $this->hasMany('App\usuario_mascota');
     }
 
     public function noticias(){

@@ -12,10 +12,10 @@ class Mascotas extends Model
     ];
 
     public function refugio(){
-      return $this->belongsTo('App/refugios');
+      return $this->belongsTo('App\Refugio');
     }
 
     public function usuario_mascotas(){
-      return $this->hasMany('App/usuario_mascota');
+      return $this->hasMany('App\usuario_mascota');
     }
 }

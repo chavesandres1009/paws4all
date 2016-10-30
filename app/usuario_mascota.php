@@ -12,10 +12,10 @@ class usuario_mascota extends Model
     ];
 
     public function mascota(){
-      return $this->belongsTo('App/Mascotas');
+      return $this->belongsTo('App\Mascotas');
     }
 
     public function user(){
-      return $this->belongsTo('App/User');
+      return $this->belongsTo('App\User');
     }
 }

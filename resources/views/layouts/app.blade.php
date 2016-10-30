@@ -49,10 +49,24 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
+                        <li><a href="{{ url('/animales') }}">Animales en refugios</a></li>
+
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Ingresar</a></li>
                             <li><a href="{{ url('/register') }}">Registerse</a></li>
+                            <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                  Registrarse <span class="caret"></span>
+                              </a>
+                              <ul class="dropdown-menu" role="menu">
+                                  <li>
+                                      <a href="{{ url('/register') }}">Nuevo Usuario</a>
+                                      <a href="{{ url('/refugio_user_add')}}">Registrar refugio</a>
+                                  </li>
+                                </ul>
+                            </li>
                         @else
+                          @if(Auth::user()->is_admin)
                             <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                   Animales <span class="caret"></span>
@@ -60,10 +74,11 @@
                               <ul class="dropdown-menu" role="menu">
                                   <li>
                                       <a href="{{ url('/animal_add') }}">Agregar</a>
-                                      <a href="{{ url('/animales')}}">Ver todos</a>
+                                      <a href="{{ url('/refugio_mascotas')}}">Ver todos</a>
                                   </li>
                                 </ul>
                             </li>
+                          @endif
 
                             <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

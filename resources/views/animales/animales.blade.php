@@ -11,10 +11,10 @@
 
             <h2>Hola, mi nombre es {{ $mascota->nombre }}</h2>
             <p class="lead">
-                by <a href="#">Refugio</a>
+                 Refugio: {{ $mascota->refugio->nombre }}
             </p>
             <hr>
-            <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+            <p><span class="glyphicon glyphicon-time"></span> Posteado el {{ $mascota->created_at }}</p>
 
             <hr>
             <img src="storage/mascotas/{{ $mascota->imagen }}" class="img-responsive"  alt="">
@@ -23,8 +23,8 @@
             <p>Tipo: {{ $mascota->tipo }}</p>
             <p>Estado: {{ $mascota->estado }}</p>
             <p>
-              <a href="{{ $mascota->id }}/modificar_animal" class="btn-link">Modificar</a>
-              <a href="{{ $mascota->id }}/eliminar_animal" class="btn-link">Eliminar</a>
+              <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Adoptar</button>
+              <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Apadrinar</button>
             </p>
             <hr>
           </div>
@@ -32,5 +32,22 @@
       </div>
 @endforeach
 <?php echo $mascotas->render(); ?>
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Apadrinar</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar cambios</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 @endif
 @endsection

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Requests;
 
-use App\refugios;
+use App\Refugio;
 use App\User;
 use Storage;
 
@@ -17,7 +18,7 @@ class RefugiosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     
+
     public function index()
     {
         //
@@ -66,7 +67,7 @@ class RefugiosController extends Controller
       ]);
 
 //      dd($request);
-      $refugio = new refugios();
+      $refugio = new Refugio();
 //      $this->set_refugio($refugio, $request);
       $refugio->nombre = $request->nombre;
       $refugio->direccion = $request->direccion;
@@ -87,6 +88,46 @@ class RefugiosController extends Controller
       return view('home');
     }
 
+    public function store_refugio(Request $request)
+    {
+      $this->validate($request, [
+        'nombre' => 'required',
+        'direccion' => 'required',
+        'telefono' => 'required',
+        'email' => 'required|email',
+        'password' => 'required|min:6|confirmed',
+        //'password-confirmation' => 'required'
+      ]);
+
+      $user = new User();
+
+      $user->name = $request->nombre;
+      $user->apellidos = $request->nombre;
+      $user->email = $request->email;
+      $user->password = bcrypt($request->password);
+
+//      dd($user);
+      $refugio = new Refugio();
+//      $this->set_refugio($refugio, $request);
+      $refugio->nombre = $request->nombre;
+      $refugio->direccion = $request->direccion;
+      $refugio->descripcion = $request->descripcion;
+      $refugio->telefono = $request->telefono;
+      $refugio->email = $request->email;
+
+      $logo = $request->file('logo');
+      if($logo != null){
+        $name = time(). '_' . $logo->getClientOriginalName();
+        Storage::disk('refugios_pic')->put($name, file_get_contents($logo->getRealPath()));
+        $refugio->logo = $name;
+      }
+      $refugio->save();
+      $user->refugio_id = $refugio->id;
+      $user->is_admin = true;
+      $user->save();
+      return view('home');
+    }
+
     /**
      * Display the specified resource.
      *
@@ -99,7 +140,12 @@ class RefugiosController extends Controller
     }
 
     public function show_all(){
-      return view('refugios.refugios')->with(['refugios' => refugios::all() ]);
+      return view('refugios.refugios')->with(['refugios' => Refugio::all() ]);
+    }
+
+    public function show_all_refugio(){
+      $refugio = Refugio::find(Auth::user()->refugio_id);
+      return view('animales.administracion_animales')->with(['refugio' => $refugio ]);
     }
 
     /**
@@ -110,7 +156,7 @@ class RefugiosController extends Controller
      */
     public function edit($id)
     {
-        $refugio = refugios::find($id);
+        $refugio = Refugio::find($id);
         return view('refugios.add_modify_refugio')->with(['refugio' => $refugio]);
     }
 
@@ -130,7 +176,7 @@ class RefugiosController extends Controller
         'email' => 'required|email',
       ]);
 
-      $refugio = refugios::find($id);
+      $refugio = Refugio::find($id);
       //$this->set_refugio($refugio, $request);
 
       $refugio->nombre = $request->nombre;
@@ -157,7 +203,7 @@ class RefugiosController extends Controller
      */
     public function destroy($id)
     {
-        refugios::destroy($id);
+        Refugio::destroy($id);
         return back();
     }
 }

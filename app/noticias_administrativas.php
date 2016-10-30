@@ -12,6 +12,6 @@ class noticias_administrativas extends Model
     ];
 
     public function refugio(){
-      return $this->belongsTo('App/refugios');
+      return $this->belongsTo('App\refugios');
     }
 }
