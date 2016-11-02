@@ -28,7 +28,7 @@ class User extends Authenticatable
     ];
 
     public function refugio(){
-      return $this->belongsTo('App\refugios');
+      return $this->belongsTo('App\Refugio');
     }
 
     public function usuario_mascota(){

@@ -49,6 +49,8 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
+                        <li><a href="{{ url('/news') }}">Noticias</a></li>
+                        <li><a href="{{ url('/news_admin') }}">Noticias de Refugios</a></li>
                         <li><a href="{{ url('/animales') }}">Animales en refugios</a></li>
 
                         @if (Auth::guest())
@@ -98,7 +100,7 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="">Modificar</a>
+                                        <a @if(Auth::user()->is_admin) href="{{ url('/refugio_user_add')}} " @else href="{{ url('modify_user') }}" @endif >Modificar</a>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

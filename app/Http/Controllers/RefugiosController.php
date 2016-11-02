@@ -195,6 +195,43 @@ class RefugiosController extends Controller
       return view('home');
     }
 
+    public function update_admin(Request $request)
+    {
+      $this->validate($request, [
+        'nombre' => 'required',
+        'direccion' => 'required',
+        'telefono' => 'required',
+        'email' => 'required|email',
+        'password' => 'min:6|confirmed',
+        //'password-confirmation' => 'required'
+      ]);
+
+      $user = Auth::user();
+
+      $user->name = $request->nombre;
+      $user->apellidos = $request->nombre;
+      $user->email = $request->email;
+      $user->password =  isset($request->password) || empty($request->password) ? $user->password : bcrypt($request->password);
+      $user->save();
+
+//      dd($user);
+      $refugio = Refugio::find($user->refugio_id);
+      $refugio->nombre = $request->nombre;
+      $refugio->direccion = $request->direccion;
+      $refugio->descripcion = $request->descripcion;
+      $refugio->telefono = $request->telefono;
+      $refugio->email = $request->email;
+
+      $logo = $request->file('logo');
+      if($logo != null){
+        $name = time(). '_' . $logo->getClientOriginalName();
+        Storage::disk('refugios_pic')->put($name, file_get_contents($logo->getRealPath()));
+        $refugio->logo = $name;
+      }
+      $refugio->save();
+      return view('home');
+    }
+
     /**
      * Remove the specified resource from storage.
      *

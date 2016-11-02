@@ -48,24 +48,6 @@
                             </form>
                         @endif
 
-                        @if (count($noticias) > 0)
-                            @foreach ($noticias as $noticia)
-                                <div class="noticia">
-                                    <label>{{ $noticia->titulo }}</label>
-                                    <label>{{ $noticia->created_at }}</label>
-                                    <p>{{ $noticia->descripcion }}</p>
-                                    <?php $user = $usuarios->find($noticia->user_id); ?>
-                                    <span>{{ $user->name . ' ' . $user->apellidos }}</span>
-                                    @if ($noticia->imagen !== 'none')
-                                        <img src="{{ asset('/imgNoticias/'.$noticia->imagen) }}" >
-                                    @endif
-                                </div>
-                            @endforeach
-
-
-                        @else
-                           No hay noticias.
-                        @endif
                     </div>
                 </div>
             </div>

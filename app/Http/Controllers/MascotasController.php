@@ -64,6 +64,7 @@ class MascotasController extends Controller
           $mascota->imagen = $name;
         }
         $mascota->save();
+        NoticiasController::new_noticias_administrativa($request->refugio_id, 'Nueva mascota en adopción',  'Hola a todos, queremos informarles que ' . $mascota->nombre .' busca una familia amorosa que lo adopte' , $mascota->imagen);
         return view("home");
     }
 

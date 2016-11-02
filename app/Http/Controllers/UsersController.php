@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Requests;
 
@@ -70,9 +71,29 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update_user(Request $request)
     {
-        //
+      $this->validate($request, [
+          'name' => 'required|max:255',
+          'apellidos' => 'required|max:255',
+          //'email' => 'required|email|max:255|unique:users',
+          'password' => 'min:6|confirmed',
+        ]);
+
+        $user = Auth::user();
+
+        $user->name = $request->name;
+        $user->apellidos = $request->apellidos;
+        //$user->email = $request->email;
+        $user->password =  isset($request->password) || empty($request->password) ? $user->password : bcrypt($request->password);
+        $user->save();
+        return view('home');
+
+    }
+
+    public function update_admin(Request $request)
+    {
+
     }
 
     /**

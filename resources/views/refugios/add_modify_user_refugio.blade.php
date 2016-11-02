@@ -5,20 +5,20 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">Cuenta de Refugio</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" @if(isset($refugio)) action="{{ url('/' . $refugio->id . '/guardar_refugio_user') }}" @else action="{{ url('/guardar_refugio_user') }}" @endif enctype="multipart/form-data">
+                    <form class="form-horizontal" role="form" method="POST" @if(!Auth::guest()) action="{{ url('/update_refugio') }}" @else action="{{ url('/guardar_refugio_user') }}" @endif enctype="multipart/form-data">
                         {{ csrf_field() }}
 
-                        @if(isset($refugio))
-                        <img style="heigth: 100px; width: 100px;" src="../storage/refugios/{{ $refugio->logo }}" class="img-responsive"  alt="">
+                        @if(!Auth::guest())
+                        <img style="heigth: 100px; width: 100px;" src="../storage/refugios/{{ Auth::user()->refugio->logo }}" class="img-responsive"  alt="">
                         @endif
 
                         <div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
                             <label for="nombre" class="col-md-4 control-label">Nombre</label>
 
                             <div class="col-md-6">
-                                <input id="nombre" type="text" class="form-control" name="nombre" @if (isset($refugio)) value="{{ $refugio->nombre }}" @endif>
+                                <input id="nombre" type="text" class="form-control" name="nombre"  @if(!Auth::guest()) value="{{ Auth::user()->name }}" @endif>
 
                                 @if ($errors->has('nombre'))
                                     <span class="help-block">
@@ -32,7 +32,7 @@
                             <label for="direccion" class="col-md-4 control-label">Dirección</label>
 
                             <div class="col-md-6">
-                                <textarea type="text" class="form-control" name="direccion">@if (isset($refugio)) {{ $refugio->direccion }} @endif </textarea>
+                                <textarea type="text" class="form-control" name="direccion"> @if(!Auth::guest()) {{ Auth::user()->refugio->direccion }} @endif </textarea>
 
                                 @if ($errors->has('direccion'))
                                     <span class="help-block">
@@ -46,7 +46,7 @@
                             <label for="descripcion" class="col-md-4 control-label">Descripción</label>
 
                             <div class="col-md-6">
-                                <textarea type="email" class="form-control" name="descripcion">@if (isset($refugio)) {{ $refugio->descripcion }} @endif </textarea>
+                                <textarea class="form-control" name="descripcion"> @if(!Auth::guest()) {{ Auth::user()->refugio->descripcion }} @endif </textarea>
 
                                 @if ($errors->has('descripcion'))
                                     <span class="help-block">
@@ -60,7 +60,7 @@
                             <label for="telefono" class="col-md-4 control-label">Teléfono</label>
 
                             <div class="col-md-6">
-                                <input type="tel" class="form-control" name="telefono" @if (isset($refugio)) value="{{ $refugio->telefono }}" @endif>
+                                <input type="tel" class="form-control" name="telefono" @if (!Auth::guest()) value="{{ Auth::user()->refugio->telefono }}" @endif>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -74,7 +74,7 @@
                             <label for="email" class="col-md-4 control-label">Correo</label>
 
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" @if (isset($refugio)) value="{{ $refugio->email }}" @endif required >
+                                <input type="email" class="form-control" name="email"  @if(!Auth::guest()) value="{{ Auth::user()->email }}" @endif required >
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -101,7 +101,7 @@
                             <label for="password" class="col-md-4 control-label">Contraseña</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control" name="password">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -115,7 +115,7 @@
                             <label for="password-confirm" class="col-md-4 control-label">Confirmar Contraseña</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
 
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
@@ -128,7 +128,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                  @if(isset($refugio))
+                                  @if(!Auth::guest())
                                     Modificar Refugio
                                   @else
                                     Registrar Refugio

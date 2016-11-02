@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\noticias;
+use App\noticias_administrativas;
 
 use App\User;
 
@@ -24,11 +25,21 @@ class NoticiasController extends Controller
         //
         $noticias = noticias::all();
         $usuarios = User::all();
+        $noticias_admin = noticias_administrativas::all();
 
         return view('noticias.index', [
             'noticias' => $noticias,
             'usuarios' => $usuarios,
+            'noticias_admin' => $noticias_admin,
         ]);
+    }
+
+    public function index_news(){
+      return view('noticias.news', ['noticias' => noticias::all()]);
+    }
+
+    public function index_news_admin(){
+      return view('noticias.news_admin', ['noticias' => noticias_administrativas::all()]);
     }
 
     /**
@@ -64,7 +75,7 @@ class NoticiasController extends Controller
             'imagen' => $file_route,
         ]);
 
-        return redirect('/noticias');
+        return redirect('/news');
     }
 
     /**
@@ -76,6 +87,15 @@ class NoticiasController extends Controller
     public function show($id)
     {
         //
+    }
+
+    public static function new_noticias_administrativa($refugio_id, $subject, $description, $image){
+      $noticia = new noticias_administrativas();
+      $noticia->titulo =  $subject;
+      $noticia->refugio_id = $refugio_id;
+      $noticia->descripcion = $description;
+      $noticia->imagen = $image;
+      $noticia->save();
     }
 
     /**
