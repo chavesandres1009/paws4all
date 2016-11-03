@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use App\Mascotas;
 use Storage;
+use Illuminate\Support\Facades\Session;
 
 class MascotasController extends Controller
 {
