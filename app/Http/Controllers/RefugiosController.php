@@ -138,7 +138,8 @@ class RefugiosController extends Controller
      */
     public function show($id)
     {
-        //
+      $refugio = Refugio::find($id);
+      return view('refugios.refugio')->with(['refugio' => $refugio]);
     }
 
     public function show_all(){

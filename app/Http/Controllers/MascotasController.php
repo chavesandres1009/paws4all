@@ -83,15 +83,15 @@ class MascotasController extends Controller
     public function show_all()
     {
         //
-        $mascotas = Mascotas::paginate(2);
+        $mascotas = Mascotas::paginate(3);
         return view('animales.animales', ['mascotas' => $mascotas]);
     }
-    
-    
+
+
     public function adoptar()
     {
         //
-        $mascotas = Mascotas::paginate(2);
+        $mascotas = Mascotas::paginate(3);
         Session::flash('success', 'Tu solicitud de adopcion ha sido enviada!');
         return view('animales.animales', ['mascotas' => $mascotas]);
     }
@@ -140,6 +140,7 @@ class MascotasController extends Controller
       {
         $name = time() . '_' . $request->img->getClientOriginalName();
         Storage::disk('mascotas_pic')->put($name, file_get_contents($img->getRealPath()));
+        Storage::disk('imgNoticias')->put($name, file_get_contents($img->getRealPath()));
         $mascota->imagen = $name;
       }
 

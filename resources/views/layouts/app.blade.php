@@ -121,6 +121,17 @@
 
         @yield('content')
     </div>
+    <footer class="footer">
+   <div class="container">
+     <ul>
+       <li>&copy; Paws4All. All rights reserved.</li>
+       <li>Analive Castro</li>
+       <li>Oscar Chaves</li>
+       <li>Karla Dalorzo</li>
+       <li>José Villalobos</li>
+     </ul>
+   </div>
+ </footer>
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>

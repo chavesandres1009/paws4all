@@ -38,8 +38,6 @@ Route::get('/modify_user', function () {
 
 Route::post('/update_user', 'UsersController@update_user');
 
-
-
 Auth::routes();
 
 Route::post('/guardar_animal', 'MascotasController@store');
@@ -55,6 +53,8 @@ Route::get('/animales', 'MascotasController@show_all');
 Route::post('/guardar_refugio_user', 'RefugiosController@store_refugio');
 
 Route::post('/guardar_refugio', 'RefugiosController@store');
+
+Route::get('/{refugio}/refugio/', 'RefugiosController@show');
 
 Route::get('/{refugio}/modificar_refugio/', 'RefugiosController@edit');
 
@@ -72,7 +72,11 @@ Route::get('/home', 'HomeController@index');
 
 // NOTICIAS
 Route::resource('/noticias', 'NoticiasController');
+Route::get('/add_noticia_admin_form', function () {
+    return view('noticias.add_noticias_admin');
+});
 Route::get('/news', 'NoticiasController@index_news');
+Route::post('/add_news_admin', 'NoticiasController@store_admin_new');
 Route::get('/news_admin', 'NoticiasController@index_news_admin');
 Route::post('/noticia', 'NoticiasController@store');
 

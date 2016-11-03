@@ -2,41 +2,35 @@
 
 @section('content')
 @if(isset($mascotas))
-@foreach($mascotas as $mascota)
+
 
 <div class="container">
-
-    <div class="row">
-        @if(Session::has('success' ))
+@foreach($mascotas as $mascota)
+      <div class="col-sm-6 col-md-4">
+      @if(Session::has('success' ))
             <div class="alert alert-success">
                 {{Session::get("success")}}
             </div>
-        @endif
-
-        <div class="col-lg-8">
-
-            <h2>Hola, mi nombre es {{ $mascota->nombre }}</h2>
-            <p class="lead">
-                 Refugio: {{ $mascota->refugio->nombre }}
-            </p>
-            <hr>
-            <p><span class="glyphicon glyphicon-time"></span> Posteado el {{ $mascota->created_at }}</p>
-
-            <hr>
-            <img src="storage/mascotas/{{ $mascota->imagen }}" class="img-responsive"  alt="">
-            <hr>
-            <p>Raza: {{ $mascota->raza }}</p>
-            <p>Tipo: {{ $mascota->tipo }}</p>
-            <p>Estado: {{ $mascota->estado }}</p>
-            <p>
-              <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Adoptar</button>
-              <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Apadrinar</button>
-            </p>
-            <hr>
-          </div>
-        </div>
+      @endif
+      <div class="thumbnail">
+         <img src="storage/mascotas/{{ $mascota->imagen }}" alt="">
+         <div class="caption">
+           <h2>Hola, mi nombre es {{ $mascota->nombre }}</h2>
+           <h3>Refugio: <a href="{{$mascota->refugio_id}}/refugio">{{ $mascota->refugio->nombre }}</a> </h3>
+           <p><span class="glyphicon glyphicon-time"></span>{{ $mascota->created_at }}</p>
+           <p>Raza: {{ $mascota->raza }}</p>
+           <p>Tipo: {{ $mascota->tipo }}</p>
+           <p>Estado: {{ $mascota->estado }}</p>
+           <p>
+             <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Adoptar</button>
+             <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Apadrinar</button>
+           </p>
+         </div>
+       </div>
+     </div>
+        @endforeach
       </div>
-@endforeach
+
 <?php echo $mascotas->render(); ?>
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">

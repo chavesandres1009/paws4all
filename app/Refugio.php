@@ -19,7 +19,7 @@ class Refugio extends Model
       return $this->hasMany('App\Mascotas');
     }
 
-    public function noticias(){
+    public function noticias_administrativas(){
       return $this->hasMany('App\noticias_administrativas');
     }
 }

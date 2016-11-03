@@ -78,6 +78,25 @@ class NoticiasController extends Controller
         return redirect('/news');
     }
 
+    public function store_admin_new(Request $request)
+    {
+        //
+        $file_route = 'none';
+        $img = $request->file('urlImg');
+        if(isset($img)) {
+            $file_route = time() . '_' . $img->getClientOriginalName();
+            Storage::disk('imgNoticias')->put($file_route, file_get_contents($img->getRealPath()));
+        }
+
+        $noticia = new noticias_administrativas();
+        $noticia->titulo = $request->titulo;
+        $noticia->descripcion = $request->descripcion;
+        $noticia->imagen = $file_route;
+        $noticia->refugio_id = $request->user()->refugio_id;
+        $noticia->save();
+        return redirect('/news_admin');
+    }
+
     /**
      * Display the specified resource.
      *
