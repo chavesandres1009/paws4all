@@ -186,6 +186,7 @@ class RefugiosController extends Controller
       $refugio->descripcion = $request->descripcion;
       $refugio->telefono = $request->telefono;
       $refugio->email = $request->email;
+      $refugio->paypal = $request->paypal;
 
       $logo = $request->file('logo');
       if($logo != null){
