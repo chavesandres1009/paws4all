@@ -55,6 +55,20 @@
                                 @endif
                             </div>
                         </div>
+                        
+                        <div class="form-group{{ $errors->has('paypal') ? ' has-error' : '' }}">
+                            <label for="paypal" class="col-md-4 control-label">Paypal</label>
+
+                            <div class="col-md-6">
+                                <input id="paypal" type="text" class="form-control" name="paypal" @if (isset($refugio)) value="{{ $refugio->paypal }}" @endif>
+
+                                @if ($errors->has('paypal'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('paypal') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group{{ $errors->has('telefono') ? ' has-error' : '' }}">
                             <label for="telefono" class="col-md-4 control-label">Teléfono</label>
