@@ -27,6 +27,6 @@ class CreateTipoAnimalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_animals');
+        Schema::dropIfExists('tipo_animales');
     }
 }
