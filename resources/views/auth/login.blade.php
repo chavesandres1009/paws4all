@@ -65,6 +65,5 @@
         </div>
     </div>
 </div>
-<div style="padding-bottom: 15%;">
-</div>
+<div style="padding-bottom: 11%;"></div>
 @endsection

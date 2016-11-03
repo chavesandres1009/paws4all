@@ -93,5 +93,5 @@
         </div>
     </div>
 </div>
-<div style="padding-bottom: 8%;"></div>
+<div style="padding-bottom: 3%;"></div>
 @endsection
