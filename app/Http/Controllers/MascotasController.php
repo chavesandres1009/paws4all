@@ -85,6 +85,15 @@ class MascotasController extends Controller
         $mascotas = Mascotas::paginate(2);
         return view('animales.animales', ['mascotas' => $mascotas]);
     }
+    
+    
+    public function adoptar()
+    {
+        //
+        $mascotas = Mascotas::paginate(2);
+        Session::flash('success', 'Tu solicitud de adopcion ha sido enviada!');
+        return view('animales.animales', ['mascotas' => $mascotas]);
+    }
 
     /**
      * Show the form for editing the specified resource.
