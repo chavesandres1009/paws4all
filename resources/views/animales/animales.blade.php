@@ -3,6 +3,7 @@
 @section('content')
 @if(isset($mascotas))
 @foreach($mascotas as $mascota)
+
 <div class="container">
 
     <div class="row">
@@ -11,6 +12,7 @@
                 {{Session::get("success")}}
             </div>
         @endif
+
         <div class="col-lg-8">
 
             <h2>Hola, mi nombre es {{ $mascota->nombre }}</h2>
@@ -44,15 +46,17 @@
         <h4 class="modal-title">Adoptar</h4>
       </div>
       <div class="modal-body">
-                Al clickear el boton "Adoptar" se enviara un correo con su solicitud de adopcion.
+        Al clickear el boton "Adoptar" se enviara un correo con su solicitud de adopcion.
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar cambios</button>
+        <a href="{{ url('/adoptar')}}"><button type="button" class="btn btn-primary">Adoptar</button></a>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
 
 <div id="myModal2" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
