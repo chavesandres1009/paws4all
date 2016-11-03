@@ -2,16 +2,16 @@
 
 @section('content')
 @if(isset($mascotas))
+@if(Session::has('success' ))
+            <div class="alert alert-success">
+                {{Session::get("success")}}
+            </div>
+        @endif
 @foreach($mascotas as $mascota)
 
 <div class="container">
 
     <div class="row">
-        @if(Session::has('success' ))
-            <div class="alert alert-success">
-                {{Session::get("success")}}
-            </div>
-        @endif
 
         <div class="col-lg-8">
 
