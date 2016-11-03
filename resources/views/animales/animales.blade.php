@@ -3,7 +3,6 @@
 @section('content')
 @if(isset($mascotas))
 
-
 <div class="container">
 @foreach($mascotas as $mascota)
       <div class="col-sm-6 col-md-4">
