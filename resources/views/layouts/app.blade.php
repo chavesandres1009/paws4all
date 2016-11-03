@@ -20,9 +20,9 @@
         ]); ?>
     </script>
 </head>
-<body>
+<body id="body">
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top" id="nav">
             <div class="container">
                 <div class="navbar-header">
 
@@ -123,7 +123,7 @@
     </div>
     <footer class="footer">
        <div class="container">
-           <p>&copy; Paws4All. All rights reserved 2016</p>
+           <p>&copy; 2016 Paws4All</p>
            <p>
              <span>| Analive Castro</span>
              <span>| Oscar Chaves</span>

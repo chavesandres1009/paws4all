@@ -3,7 +3,9 @@
 @section('content')
 @if(isset($refugio))
 <div class="container">
-  <table class="table table-condensed">
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
+  <table class="table table-condensed" id="table-animal">
     <tr>
       <th>Imagen</th>
       <th>Nombre</th>
@@ -11,7 +13,7 @@
       <th>Edad</th>
       <th>Raza</th>
       <th>Tamaño</th>
-      <th>Opciones</th>
+      <th id="th-opt">Opciones</th>
     </tr>
     @foreach ($refugio->mascotas as $mascota)
       <tr>
@@ -29,5 +31,11 @@
       </tr>
     @endforeach
   </table>
+  </div>
+  </div>
+  </div>
+
+  <div style="padding-bottom: 9%;"></div>
+
 @endif
 @endsection

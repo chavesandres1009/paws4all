@@ -7,7 +7,7 @@
                 <img src="images/logo.png" style="height: 60%; width: 100%">
         </div>
 
-        <div class="col-md-7 col-md-offset-1">
+        <div class="col-md-7 col-md-offset-1" id="welcome">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="jumbotron" id="jumbotron">

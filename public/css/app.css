@@ -1,3 +1,10 @@
+/*GENERAL*/
+#body {
+	background-color: white;
+}
+#app {
+	background-color: white;
+}
 .footer {
 	position: relative;
 	right: 0;
@@ -8,11 +15,83 @@
 	background-color: #efefef;
 	text-align: center;
 }
-
+#nav, #app-navbar-collapse {
+	background-color: #efefef;
+	border-color:  #efefef;
+}
+/*WELCOME*/
+#jumbotron {
+	background-color: #AB4A4A;
+	color: white;
+	text-align: justify;
+}
 #jumbotron p{
 	margin-bottom: 10px;
 	font-size: 14px;
 }
+#jumbotron a {
+	background-color: #604646;
+	border-color: #604646;
+	color: #FFE6E6;
+}
+#welcome .panel-default{
+	border-color: white;
+}
+/*NEWS*/
+#new-panel {
+	border-color: #AB4A4A;
+}
+#new-panel .panel-heading {
+	background-color: #AB4A4A;
+	color: white;
+}
+#new-panel  .lead {
+	text-align: right;
+}
+#btn-publicacion a{
+	background-color: #604646;
+	border-color: #604646;
+	color: #FFE6E6;
+}
+#returnTop  a{
+	background-color: #604646;
+	border-color: #604646;
+	color: #FFE6E6;
+}
+/*ANIMALS*/
+#panel-animal .btn-success {
+	background-color: #D06060;
+	border-color: #D06060;
+	color: #FFE6E6;
+}
+
+#panel-animal .btn-default {
+	background-color: #550000;
+	border-color: #550000;
+	color: #FFE6E6;
+}
+/*LOGIN*/
+#login .panel-heading {
+	font-weight: bold;
+	color: white;
+	background-color: #AB4A4A;
+}
+#login .panel, #login .panel-heading {
+	border-color: #AB4A4A;
+}
+#login .btn-primary {
+	background-color: #AB4A4A;
+	border-color: #AB4A4A;
+}
+/*ANIMALS*/
+#table-animal .btn-link{
+color: #D06060;
+}
+
+#table-animal #th-opt {
+	text-align: center;
+}
+
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);/*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.

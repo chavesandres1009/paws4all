@@ -5,7 +5,7 @@
 
 <div class="container">
 @foreach($mascotas as $mascota)
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-6 col-md-4" id="panel-animal">
       @if(Session::has('success' ))
             <div class="alert alert-success">
                 {{Session::get("success")}}

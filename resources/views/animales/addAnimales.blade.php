@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" id="login">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
@@ -108,7 +108,7 @@
                         <input name="refugio_id" style="visibility: hidden" value="{{ Auth::user()->refugio_id }}" />
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-md-5 col-md-offset-7">
                                 <button type="submit" class="btn btn-primary">
                                   @if (isset($mascota))
                                     Modificar
