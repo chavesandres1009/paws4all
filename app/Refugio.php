@@ -8,7 +8,7 @@ class Refugio extends Model
 {
     //
     protected $fillable = [
-        'nombre', 'direccion', 'descripcion', 'telefono', 'correo', 'logo'
+        'nombre', 'direccion', 'descripcion', 'telefono', 'correo', 'logo','paypal'
     ];
 
     public function user(){
