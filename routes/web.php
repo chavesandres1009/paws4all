@@ -10,10 +10,8 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', "NoticiasController@index" );
+Route::get('/home', 'NoticiasController@index');
 
 /*
 Route::get('/ind', function () {
@@ -81,4 +79,16 @@ Route::post('/noticia', 'NoticiasController@store');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');
+
+Route::get('/adoptar', 'MascotasController@adoptar');
+
+Route::get('/paypal', function () {
+    return view('paypal.adoptar');
+});
+Route::get('/exito', function () {
+    return view('paypal.exito');
+});
+Route::get('/error', function () {
+    return view('paypal.error');
+});
