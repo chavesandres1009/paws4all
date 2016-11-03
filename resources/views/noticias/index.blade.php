@@ -3,6 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row">
+            <div>
+            <span>Quienes somos</span>
+            <p>Paw4all es una web dedicada a ayudar a los refugios de animales por medio de una plataforma que les
+                permita mostrar sus animales para que puedan ser adoptados o apadrinados.</p>
+        </div>
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Noticias</div>
